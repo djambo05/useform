@@ -8,7 +8,7 @@ function App() {
     watch,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+  console.log(watch(errors));
   return (
     <form
       style={{ padding: "40px" }}
