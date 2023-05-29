@@ -7,7 +7,7 @@ function App() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "onBlur" });
   console.log(watch(errors));
   return (
     <form
@@ -19,22 +19,30 @@ function App() {
       <input
         {...register("firstName", {
           required: "This is Required!",
+          minLength: {
+            value: 2,
+            message: `You need more than 1 symbols!`,
+          },
           maxLength: {
             value: 25,
-            message: `You are exeeded 25 symbols!`,
+            message: `You exeeded 25 symbols!`,
           },
         })}
       />
-      {errors.firstName && <span>{errors.firstName.message}</span>}
+      {errors.firstName && <span>{errors.firstName.message || "error!"}</span>}
       <tr></tr>
       <label>secondName</label>
       <tr></tr>
       <input
         {...register("secondName", {
           required: "This is Required!",
+          minLength: {
+            value: 2,
+            message: `You need more than 1 symbols!`,
+          },
           maxLength: {
             value: 25,
-            message: `You are exeeded 25 symbols!`,
+            message: `You exeeded 25 symbols!`,
           },
         })}
       />
