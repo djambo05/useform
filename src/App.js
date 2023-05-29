@@ -6,14 +6,15 @@ function App() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
-  console.log(watch(errors));
+  const onSubmit = (data) => {
+    console.log(data, "submitting data");
+    reset();
+  };
   return (
-    <form
-      style={{ padding: "40px" }}
-      onSubmit={handleSubmit((data) => console.log(data, "submitting data"))}
-    >
+    <form style={{ padding: "40px" }} onSubmit={handleSubmit(onSubmit)}>
       <label>firstName</label>
       <tr></tr>
       <input
