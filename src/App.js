@@ -7,7 +7,7 @@ function App() {
     handleSubmit,
     watch,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ mode: "onBlur" });
   const onSubmit = (data) => {
     console.log(data, "submitting data");
@@ -67,7 +67,7 @@ function App() {
       </select>
       {errors.gender && <span>{errors.gender.message}</span>}
       <tr></tr>
-      <input type="submit" />
+      <input type="submit" disabled={!isValid} />
     </form>
   );
 }
